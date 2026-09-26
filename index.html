@@ -1,0 +1,632 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>SIMTECH</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Rajdhani:wght@500;600;700&display=swap"
+        rel="stylesheet">
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<header>
+
+    <div class="logo">
+        <span class="logo-sim">SIM</span><span class="logo-tech">TECH</span>
+    </div>
+
+    <nav id="menuPrincipal">
+        <a href="#" onclick="mostrarTela('inicio'); return false;">INÍCIO</a>
+        <a href="#" onclick="mostrarTela('simulados'); return false;">SIMULADOS</a>
+        <a href="#" onclick="mostrarTela('criar'); return false;">CRIAR</a>
+    </nav>
+
+    <div class="usuario-area">
+
+        <div class="avatar" id="avatarUsuario">
+            ?
+        </div>
+
+        <div class="usuario-info">
+            <strong id="usuarioNome">VISITANTE</strong>
+            <small>● ONLINE</small>
+        </div>
+
+        <button class="botao-sair" onclick="sair()">
+            SAIR
+        </button>
+
+    </div>
+
+</header>
+
+
+<main>
+
+    <!-- LOGIN -->
+
+    <section id="login" class="tela">
+
+        <div class="login-container">
+
+            <div class="login-apresentacao">
+
+                <div class="codigo-decorativo">
+                    SYSTEM // STUDY_MODE
+                </div>
+
+                <div class="logo-grande">
+                    SIM<span>TECH</span>
+                </div>
+
+                <div class="linha-neon"></div>
+
+                <h1>
+                    ESTUDE.<br>
+                    <span>DESAFIE-SE.</span>
+                </h1>
+
+                <p>
+                    Crie seus próprios simulados, organize suas questões
+                    e compartilhe seus desafios com outras pessoas.
+                    Uma plataforma feita para transformar seus estudos
+                    em uma experiência mais dinâmica.
+                </p>
+
+                <div class="painel-anime">
+
+                    <div>
+                        <span>01</span>
+                        CRIAR
+                    </div>
+
+                    <div>
+                        <span>02</span>
+                        RESOLVER
+                    </div>
+
+                    <div>
+                        <span>03</span>
+                        COMPARTILHAR
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <div class="login-card">
+
+                <div class="card-canto">
+                    AUTH // 001
+                </div>
+
+                <div class="pequeno-icone">
+                    ◈
+                </div>
+
+                <h2>
+                    ACESSAR <span>SISTEMA</span>
+                </h2>
+
+                <p>
+                    Entre na sua conta para continuar.
+                </p>
+
+                <label for="email">
+                    E-MAIL
+                </label>
+
+                <input
+                    type="email"
+                    id="email"
+                    placeholder="seuemail@email.com"
+                >
+
+                <label for="senha">
+                    SENHA
+                </label>
+
+                <input
+                    type="password"
+                    id="senha"
+                    placeholder="Digite sua senha"
+                >
+
+                <button
+                    class="botao-principal"
+                    onclick="entrar()"
+                >
+                    ENTRAR NO SISTEMA
+                </button>
+
+                <p id="mensagemLogin" class="mensagem"></p>
+
+                <div class="divisor">
+                    <span>OU</span>
+                </div>
+
+                <p class="texto-cadastro">
+                    Ainda não possui uma conta?
+                    <a href="#" onclick="cadastrar(); return false;">
+                        CRIAR CONTA
+                    </a>
+                </p>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- INÍCIO -->
+
+    <section id="inicio" class="tela">
+
+        <div class="dashboard-topo">
+
+            <div>
+
+                <div class="codigo-decorativo">
+                    DASHBOARD // USER
+                </div>
+
+                <h1>
+                    BEM-VINDO, <span id="nomeDashboard">PLAYER</span>
+                </h1>
+
+                <p>
+                    SEU CENTRO DE ESTUDOS DIGITAL
+                </p>
+
+            </div>
+
+            <button
+                class="botao-criar"
+                onclick="mostrarTela('criar')"
+            >
+                + NOVO SIMULADO
+            </button>
+
+        </div>
+
+
+        <div class="linha-secao"></div>
+
+
+        <div class="estatisticas">
+
+            <div class="estatistica">
+
+                <div class="estatistica-icone">
+                    ◈
+                </div>
+
+                <div>
+                    <small>SIMULADOS</small>
+                    <strong id="totalSimulados">0</strong>
+                </div>
+
+            </div>
+
+
+            <div class="estatistica">
+
+                <div class="estatistica-icone">
+                    ?
+                </div>
+
+                <div>
+                    <small>QUESTÕES</small>
+                    <strong id="totalQuestoes">0</strong>
+                </div>
+
+            </div>
+
+
+            <div class="estatistica">
+
+                <div class="estatistica-icone">
+                    ✓
+                </div>
+
+                <div>
+                    <small>SISTEMA</small>
+                    <strong class="online">ONLINE</strong>
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <div class="titulo-secao">
+
+            <span>DATABASE // USER</span>
+
+            <h2>
+                SEUS SIMULADOS
+            </h2>
+
+        </div>
+
+
+        <div id="listaSimulados">
+
+        </div>
+
+    </section>
+
+
+    <!-- SIMULADOS -->
+
+    <section id="simulados" class="tela">
+
+        <button
+            class="botao-voltar"
+            onclick="mostrarTela('inicio')"
+        >
+            ← VOLTAR
+        </button>
+
+        <div class="pagina-titulo">
+
+            <span>DATABASE // SIMULADOS</span>
+
+            <h1>
+                MEUS SIMULADOS
+            </h1>
+
+            <p>
+                Todos os seus desafios salvos no sistema.
+            </p>
+
+        </div>
+
+        <div id="listaSimuladosPagina">
+
+        </div>
+
+    </section>
+
+
+    <!-- CRIAR SIMULADO -->
+
+    <section id="criar" class="tela">
+
+        <button
+            class="botao-voltar"
+            onclick="mostrarTela('inicio')"
+        >
+            ← VOLTAR
+        </button>
+
+        <div class="pagina-titulo">
+
+            <span>CREATE // NEW PROJECT</span>
+
+            <h1>
+                CRIAR SIMULADO
+            </h1>
+
+            <p>
+                Configure seu desafio e adicione as questões.
+            </p>
+
+        </div>
+
+
+        <div class="criar-grid">
+
+            <div class="criar-form">
+
+                <div class="numero-etapa">
+                    STEP 01
+                </div>
+
+                <h2>
+                    CONFIGURAÇÃO
+                </h2>
+
+                <p>
+                    Defina as informações básicas do seu simulado.
+                </p>
+
+                <label for="tituloSimulado">
+                    TÍTULO
+                </label>
+
+                <input
+                    type="text"
+                    id="tituloSimulado"
+                    placeholder="Ex.: Simulado de História"
+                >
+
+                <label for="materiaSimulado">
+                    MATÉRIA
+                </label>
+
+                <input
+                    type="text"
+                    id="materiaSimulado"
+                    placeholder="Ex.: História"
+                >
+
+                <label for="quantidadeQuestoes">
+                    QUANTIDADE DE QUESTÕES
+                </label>
+
+                <input
+                    type="number"
+                    id="quantidadeQuestoes"
+                    min="1"
+                    max="50"
+                    placeholder="Ex.: 10"
+                >
+
+                <button
+                    class="botao-principal"
+                    onclick="criarCamposQuestoes()"
+                >
+                    CONTINUAR →
+                </button>
+
+            </div>
+
+
+            <div class="criar-lateral">
+
+                <div class="icone-tecnologia">
+                    ◇
+                </div>
+
+                <h2>
+                    SISTEMA DE CRIAÇÃO
+                </h2>
+
+                <p>
+                    Monte seu próprio desafio de estudos.
+                </p>
+
+                <div class="passo">
+                    <span>01</span>
+                    Defina o título
+                </div>
+
+                <div class="passo">
+                    <span>02</span>
+                    Escolha a matéria
+                </div>
+
+                <div class="passo">
+                    <span>03</span>
+                    Crie as questões
+                </div>
+
+                <div class="passo">
+                    <span>04</span>
+                    Salve no sistema
+                </div>
+
+                <div class="passo">
+                    <span>05</span>
+                    Compartilhe
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <div id="areaPerguntas">
+
+        </div>
+
+    </section>
+
+
+    <!-- REALIZAR SIMULADO -->
+
+    <section id="realizar" class="tela">
+
+        <button
+            class="botao-voltar"
+            onclick="mostrarTela('inicio')"
+        >
+            ← VOLTAR
+        </button>
+
+        <div class="realizar-topo">
+
+            <div>
+
+                <span>
+                    SIMULADO // ACTIVE
+                </span>
+
+                <h1 id="tituloRealizar">
+                    SIMULADO
+                </h1>
+
+            </div>
+
+            <div class="contador">
+                QUESTÃO
+                <strong id="numeroQuestao">
+                    1
+                </strong>
+                /
+                <strong id="totalQuestoesRealizar">
+                    1
+                </strong>
+            </div>
+
+        </div>
+
+
+        <div class="barra">
+
+            <div
+                class="barra-progresso"
+                id="barraProgresso"
+            ></div>
+
+        </div>
+
+
+        <div
+            id="areaRealizar"
+            class="questao-card"
+        >
+
+        </div>
+
+    </section>
+
+
+    <!-- RESULTADO -->
+
+    <section id="resultado" class="tela">
+
+        <div class="resultado-topo">
+
+            <span>
+                SYSTEM // RESULT
+            </span>
+
+            <h1>
+                SIMULADO FINALIZADO
+            </h1>
+
+            <p>
+                Confira seu desempenho.
+            </p>
+
+        </div>
+
+
+        <div class="resultado-principal">
+
+            <div
+                class="nota"
+                id="notaFinal"
+            >
+                0%
+            </div>
+
+            <h2 id="acertosFinal">
+                0 de 0
+            </h2>
+
+            <p>
+                Aproveitamento no simulado
+            </p>
+
+        </div>
+
+
+        <div class="resultados">
+
+            <h2>
+                ANÁLISE DAS QUESTÕES
+            </h2>
+
+            <div id="listaResultados">
+
+            </div>
+
+        </div>
+
+
+        <button
+            class="botao-principal"
+            onclick="mostrarTela('inicio')"
+        >
+            VOLTAR AO DASHBOARD
+        </button>
+
+    </section>
+
+
+    <!-- SIMULADO COMPARTILHADO -->
+
+    <section id="compartilhado" class="tela">
+
+        <div class="resultado-topo">
+
+            <span>
+                SHARE // PUBLIC
+            </span>
+
+            <h1 id="tituloCompartilhado">
+                SIMULADO COMPARTILHADO
+            </h1>
+
+            <p>
+                Você recebeu um simulado para responder.
+            </p>
+
+        </div>
+
+
+        <div
+            id="areaCompartilhado"
+            class="questao-card"
+        >
+
+        </div>
+
+    </section>
+
+</main>
+
+
+<footer>
+
+    <div class="footer-conteudo">
+
+        <div>
+
+            <div class="footer-logo">
+                SIM<span>TECH</span>
+            </div>
+
+            <p>
+                Tecnologia para transformar seus estudos.
+            </p>
+
+        </div>
+
+        <div class="footer-status">
+            <span></span>
+            SISTEMA ONLINE
+        </div>
+
+    </div>
+
+    <div class="footer-final">
+
+        © 2026 SIMTECH — Todos os direitos reservados.
+
+    </div>
+
+</footer>
+
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
+<script src="script.js"></script>
+
+</body>
+</html>
