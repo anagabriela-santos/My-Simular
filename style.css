@@ -75,12 +75,18 @@ a {
     text-decoration: none;
 }
 
+img {
+    max-width: 100%;
+    height: auto;
+}
+
 header {
-    height: 78px;
-    padding: 0 6%;
+    min-height: 78px;
+    padding: 15px 6%;
     display: flex;
     align-items: center;
     justify-content: space-between;
+    gap: 20px;
     background: rgba(3, 5, 9, 0.94);
     border-bottom: 1px solid var(--linha);
     position: relative;
@@ -90,10 +96,11 @@ header {
 
 .logo {
     font-family: 'Rajdhani', sans-serif;
-    font-size: 28px;
+    font-size: clamp(22px, 3vw, 28px);
     font-weight: 700;
     letter-spacing: 2px;
     transform: skew(-8deg);
+    white-space: nowrap;
 }
 
 .logo-tech {
@@ -103,7 +110,10 @@ header {
 
 nav {
     display: flex;
-    gap: 35px;
+    align-items: center;
+    justify-content: center;
+    gap: clamp(15px, 3vw, 35px);
+    flex-wrap: wrap;
 }
 
 nav a {
@@ -113,6 +123,7 @@ nav a {
     font-size: 14px;
     letter-spacing: 1px;
     position: relative;
+    white-space: nowrap;
 }
 
 nav a:hover {
@@ -144,6 +155,7 @@ nav a:hover::after {
 .avatar {
     width: 39px;
     height: 39px;
+    flex-shrink: 0;
     border: 1px solid var(--azul);
     color: var(--azul);
     background: #07111e;
@@ -201,7 +213,7 @@ main {
     width: 100%;
     max-width: 1250px;
     margin: auto;
-    padding: 60px 30px;
+    padding: clamp(30px, 5vw, 60px) clamp(15px, 3vw, 30px);
     min-height: 700px;
 }
 
@@ -216,8 +228,8 @@ main {
 .login-container {
     min-height: 650px;
     display: grid;
-    grid-template-columns: 1.2fr 430px;
-    gap: 90px;
+    grid-template-columns: minmax(0, 1.2fr) minmax(320px, 430px);
+    gap: clamp(35px, 7vw, 90px);
     align-items: center;
 }
 
@@ -253,7 +265,7 @@ main {
 
 .login-apresentacao h1 {
     font-family: 'Rajdhani', sans-serif;
-    font-size: 72px;
+    font-size: clamp(45px, 6vw, 72px);
     line-height: 0.95;
     letter-spacing: 3px;
     font-weight: 700;
@@ -302,9 +314,10 @@ main {
 
 .login-card {
     position: relative;
+    width: 100%;
     background: rgba(7, 13, 22, 0.95);
     border: 1px solid #1b3957;
-    padding: 40px;
+    padding: clamp(25px, 4vw, 40px);
     clip-path: polygon(
         0 0,
         96% 0,
@@ -486,7 +499,7 @@ textarea::placeholder {
 
 .dashboard-topo h1 {
     font-family: 'Rajdhani', sans-serif;
-    font-size: 45px;
+    font-size: clamp(32px, 4vw, 45px);
     letter-spacing: 1px;
 }
 
@@ -539,6 +552,7 @@ textarea::placeholder {
 .estatistica-icone {
     width: 45px;
     height: 45px;
+    flex-shrink: 0;
     background: #061d31;
     border: 1px solid #124f76;
     color: var(--azul);
@@ -586,16 +600,17 @@ textarea::placeholder {
 #listaSimulados,
 #listaSimuladosPagina {
     display: grid;
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: repeat(2, minmax(0, 1fr));
     gap: 18px;
 }
 
 .card-simulado {
+    min-width: 0;
     background: rgba(7, 13, 22, 0.92);
     border: 1px solid #172f49;
     padding: 22px;
     display: grid;
-    grid-template-columns: 48px 1fr auto;
+    grid-template-columns: 48px minmax(0, 1fr) auto;
     gap: 15px;
     align-items: center;
     clip-path: polygon(
@@ -629,6 +644,10 @@ textarea::placeholder {
     font-weight: 800;
 }
 
+.simulado-card-info {
+    min-width: 0;
+}
+
 .simulado-card-info span {
     font-family: 'Rajdhani', sans-serif;
     color: var(--azul);
@@ -639,6 +658,7 @@ textarea::placeholder {
 .simulado-card-info h3 {
     font-size: 15px;
     margin: 4px 0;
+    overflow-wrap: anywhere;
 }
 
 .simulado-card-info p {
@@ -650,6 +670,11 @@ textarea::placeholder {
     display: flex;
     flex-direction: column;
     gap: 7px;
+}
+
+.btn-fazer,
+.btn-compartilhar {
+    white-space: nowrap;
 }
 
 .btn-fazer {
@@ -746,7 +771,7 @@ textarea::placeholder {
 
 .pagina-titulo h1 {
     font-family: 'Rajdhani', sans-serif;
-    font-size: 42px;
+    font-size: clamp(32px, 5vw, 42px);
     letter-spacing: 1px;
     margin: 7px 0;
 }
@@ -758,15 +783,16 @@ textarea::placeholder {
 
 .criar-grid {
     display: grid;
-    grid-template-columns: 1.4fr 0.8fr;
+    grid-template-columns: minmax(0, 1.4fr) minmax(280px, 0.8fr);
     gap: 22px;
 }
 
 .criar-form,
 .criar-lateral {
+    min-width: 0;
     background: rgba(7, 13, 22, 0.92);
     border: 1px solid #172f49;
-    padding: 33px;
+    padding: clamp(22px, 3vw, 33px);
 }
 
 .criar-form {
@@ -839,7 +865,7 @@ textarea::placeholder {
 .bloco-pergunta {
     background: rgba(7, 13, 22, 0.94);
     border: 1px solid #172f49;
-    padding: 28px;
+    padding: clamp(20px, 3vw, 28px);
     margin-bottom: 20px;
     position: relative;
 }
@@ -864,6 +890,7 @@ textarea::placeholder {
 .numero-pergunta {
     width: 45px;
     height: 45px;
+    flex-shrink: 0;
     border: 1px solid #17618d;
     color: var(--azul);
     display: flex;
@@ -883,6 +910,7 @@ textarea::placeholder {
 .pergunta-topo h2 {
     font-family: 'Rajdhani', sans-serif;
     font-size: 19px;
+    overflow-wrap: anywhere;
 }
 
 .alternativas-grid {
@@ -893,13 +921,15 @@ textarea::placeholder {
 
 .botao-salvar {
     max-width: 900px;
+    width: 100%;
     margin-top: 5px;
 }
 
 .realizar-topo {
     display: flex;
     justify-content: space-between;
-    align-items: end;
+    align-items: flex-end;
+    gap: 20px;
     margin-bottom: 18px;
 }
 
@@ -914,7 +944,7 @@ textarea::placeholder {
 
 .realizar-topo h1 {
     font-family: 'Rajdhani', sans-serif;
-    font-size: 35px;
+    font-size: clamp(28px, 4vw, 35px);
     margin-top: 4px;
 }
 
@@ -941,10 +971,11 @@ textarea::placeholder {
 
 .questao-card {
     max-width: 900px;
+    width: 100%;
     margin: auto;
     background: rgba(7, 13, 22, 0.96);
     border: 1px solid #193650;
-    padding: 42px;
+    padding: clamp(22px, 5vw, 42px);
     position: relative;
 }
 
@@ -961,7 +992,7 @@ textarea::placeholder {
 
 .questao-card h2 {
     font-family: 'Rajdhani', sans-serif;
-    font-size: 27px;
+    font-size: clamp(21px, 3vw, 27px);
     line-height: 1.45;
     margin: 15px 0 30px;
 }
@@ -995,6 +1026,7 @@ textarea::placeholder {
 .letra {
     min-width: 36px;
     height: 36px;
+    flex-shrink: 0;
     border: 1px solid #17608b;
     color: var(--azul);
     display: flex;
@@ -1015,7 +1047,7 @@ textarea::placeholder {
 
 .resultado-topo h1 {
     font-family: 'Rajdhani', sans-serif;
-    font-size: 43px;
+    font-size: clamp(32px, 5vw, 43px);
     margin: 7px 0;
 }
 
@@ -1025,8 +1057,9 @@ textarea::placeholder {
 
 .resultado-principal {
     max-width: 900px;
+    width: 100%;
     margin: auto;
-    padding: 45px;
+    padding: clamp(25px, 5vw, 45px);
     text-align: center;
     border: 1px solid #1b3e5d;
     background:
@@ -1036,7 +1069,7 @@ textarea::placeholder {
 
 .nota {
     font-family: 'Rajdhani', sans-serif;
-    font-size: 85px;
+    font-size: clamp(60px, 10vw, 85px);
     font-weight: 800;
     color: var(--azul);
     text-shadow: 0 0 25px rgba(0, 170, 255, 0.4);
@@ -1054,6 +1087,7 @@ textarea::placeholder {
 
 .resultados {
     max-width: 900px;
+    width: 100%;
     margin: 40px auto 30px;
 }
 
@@ -1080,6 +1114,7 @@ textarea::placeholder {
 .resultado-questao-topo {
     display: flex;
     justify-content: space-between;
+    gap: 15px;
     margin-bottom: 12px;
 }
 
@@ -1098,6 +1133,7 @@ textarea::placeholder {
 .resultado-questao h3 {
     font-size: 14px;
     line-height: 1.6;
+    overflow-wrap: anywhere;
 }
 
 .resultado-questao p {
@@ -1130,6 +1166,7 @@ footer::before {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    gap: 30px;
 }
 
 .footer-logo {
@@ -1178,19 +1215,36 @@ footer::before {
     letter-spacing: 0.5px;
 }
 
-@media (max-width: 900px) {
+@media (max-width: 1000px) {
 
-    nav {
-        display: none;
+    header {
+        flex-wrap: wrap;
+        justify-content: center;
     }
 
     .login-container {
         grid-template-columns: 1fr;
-        gap: 35px;
+        gap: 45px;
+        max-width: 750px;
+        margin: auto;
     }
 
-    .login-apresentacao h1 {
-        font-size: 55px;
+    .login-apresentacao {
+        text-align: center;
+    }
+
+    .login-apresentacao > p {
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    .linha-neon {
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    .painel-anime {
+        justify-content: center;
     }
 
     .criar-grid {
@@ -1201,32 +1255,26 @@ footer::before {
     #listaSimuladosPagina {
         grid-template-columns: 1fr;
     }
+}
+
+@media (max-width: 750px) {
+
+    header {
+        padding: 14px 20px;
+    }
+
+    nav {
+        order: 3;
+        width: 100%;
+        gap: 18px;
+    }
+
+    .usuario-area {
+        margin-left: auto;
+    }
 
     .estatisticas {
         grid-template-columns: 1fr;
-    }
-}
-
-@media (max-width: 600px) {
-
-    header {
-        padding: 0 15px;
-    }
-
-    main {
-        padding: 35px 15px;
-    }
-
-    .usuario-info {
-        display: none;
-    }
-
-    .login-apresentacao h1 {
-        font-size: 43px;
-    }
-
-    .painel-anime {
-        flex-wrap: wrap;
     }
 
     .dashboard-topo {
@@ -1234,12 +1282,8 @@ footer::before {
         align-items: flex-start;
     }
 
-    .dashboard-topo h1 {
-        font-size: 35px;
-    }
-
     .card-simulado {
-        grid-template-columns: 45px 1fr;
+        grid-template-columns: 48px minmax(0, 1fr);
     }
 
     .simulado-card-acoes {
@@ -1252,12 +1296,109 @@ footer::before {
         grid-template-columns: 1fr;
     }
 
+    .footer-conteudo {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+}
+
+@media (max-width: 550px) {
+
+    header {
+        min-height: auto;
+        padding: 15px;
+    }
+
+    .logo {
+        font-size: 23px;
+    }
+
+    nav {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        text-align: center;
+        gap: 15px;
+    }
+
+    nav a {
+        font-size: 13px;
+    }
+
+    .usuario-info {
+        display: none;
+    }
+
+    .botao-sair {
+        margin-left: 0;
+    }
+
+    main {
+        padding: 30px 15px;
+    }
+
+    .login-container {
+        min-height: auto;
+        gap: 35px;
+    }
+
+    .login-apresentacao h1 {
+        font-size: 45px;
+    }
+
+    .logo-grande {
+        font-size: 27px;
+    }
+
+    .login-apresentacao > p {
+        font-size: 14px;
+        line-height: 1.7;
+    }
+
+    .painel-anime div {
+        width: 100%;
+        padding: 12px 15px;
+    }
+
+    .login-card,
     .criar-form,
     .criar-lateral,
-    .login-card,
     .bloco-pergunta,
     .questao-card {
-        padding: 22px;
+        padding: 20px;
+    }
+
+    .dashboard-topo h1 {
+        font-size: 32px;
+    }
+
+    .titulo-secao h2 {
+        font-size: 25px;
+    }
+
+    .card-simulado {
+        padding: 17px;
+    }
+
+    .simulado-card-acoes {
+        width: 100%;
+    }
+
+    .btn-fazer,
+    .btn-compartilhar {
+        flex: 1;
+    }
+
+    .pergunta-topo {
+        align-items: flex-start;
+    }
+
+    .pergunta-topo h2 {
+        font-size: 17px;
+    }
+
+    .numero-pergunta {
+        width: 40px;
+        height: 40px;
     }
 
     .realizar-topo {
@@ -1270,17 +1411,42 @@ footer::before {
         font-size: 21px;
     }
 
-    .resultado-topo h1 {
-        font-size: 32px;
+    .alternativa {
+        padding: 12px;
+        gap: 10px;
     }
 
-    .nota {
-        font-size: 65px;
+    .resultado-questao-topo {
+        flex-direction: column;
+        gap: 5px;
     }
 
     .footer-conteudo {
-        flex-direction: column;
-        align-items: flex-start;
         gap: 20px;
+    }
+}
+
+@media (max-width: 380px) {
+
+    nav {
+        grid-template-columns: 1fr;
+    }
+
+    .login-apresentacao h1 {
+        font-size: 38px;
+    }
+
+    .login-card {
+        padding: 17px;
+    }
+
+    .btn-fazer,
+    .btn-compartilhar {
+        width: 100%;
+        flex: none;
+    }
+
+    .simulado-card-acoes {
+        flex-direction: column;
     }
 }
