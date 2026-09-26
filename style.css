@@ -1215,238 +1215,604 @@ footer::before {
     letter-spacing: 0.5px;
 }
 
-@media (max-width: 1000px) {
+
+/* TABLET */
+
+@media (max-width: 900px) {
 
     header {
-        flex-wrap: wrap;
-        justify-content: center;
-    }
-
-    .login-container {
-        grid-template-columns: 1fr;
-        gap: 45px;
-        max-width: 750px;
-        margin: auto;
-    }
-
-    .login-apresentacao {
-        text-align: center;
-    }
-
-    .login-apresentacao > p {
-        margin-left: auto;
-        margin-right: auto;
-    }
-
-    .linha-neon {
-        margin-left: auto;
-        margin-right: auto;
-    }
-
-    .painel-anime {
-        justify-content: center;
-    }
-
-    .criar-grid {
-        grid-template-columns: 1fr;
-    }
-
-    #listaSimulados,
-    #listaSimuladosPagina {
-        grid-template-columns: 1fr;
-    }
-}
-
-@media (max-width: 750px) {
-
-    header {
-        padding: 14px 20px;
+        min-height: 70px;
+        padding: 15px 25px;
     }
 
     nav {
-        order: 3;
-        width: 100%;
-        gap: 18px;
+        display: none;
     }
 
     .usuario-area {
         margin-left: auto;
     }
 
+    main {
+        max-width: 100%;
+        padding: 40px 20px;
+    }
+
+    .login-container {
+        min-height: auto;
+        grid-template-columns: 1fr;
+        gap: 40px;
+    }
+
+    .login-apresentacao {
+        width: 100%;
+    }
+
+    .login-apresentacao h1 {
+        font-size: clamp(42px, 9vw, 60px);
+    }
+
+    .login-apresentacao > p {
+        max-width: 100%;
+        font-size: 14px;
+    }
+
+    .login-card {
+        width: 100%;
+        max-width: 500px;
+        margin: auto;
+    }
+
+    .criar-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .criar-form,
+    .criar-lateral {
+        width: 100%;
+    }
+
+    #listaSimulados,
+    #listaSimuladosPagina {
+        grid-template-columns: 1fr;
+    }
+
     .estatisticas {
         grid-template-columns: 1fr;
     }
 
-    .dashboard-topo {
-        flex-direction: column;
-        align-items: flex-start;
-    }
-
     .card-simulado {
-        grid-template-columns: 48px minmax(0, 1fr);
+        width: 100%;
     }
 
-    .simulado-card-acoes {
-        grid-column: 1 / -1;
-        flex-direction: row;
-        flex-wrap: wrap;
+    .questao-card,
+    .bloco-pergunta {
+        width: 100%;
     }
 
     .alternativas-grid {
         grid-template-columns: 1fr;
     }
 
+    .resultado-principal {
+        width: 100%;
+    }
+
     .footer-conteudo {
-        flex-direction: column;
-        align-items: flex-start;
+        gap: 25px;
     }
 }
 
-@media (max-width: 550px) {
+
+/* CELULAR */
+
+@media (max-width: 600px) {
+
+    html,
+    body {
+        width: 100%;
+        max-width: 100%;
+        overflow-x: hidden;
+    }
+
+    body {
+        min-height: 100vh;
+    }
 
     header {
-        min-height: auto;
-        padding: 15px;
+        width: 100%;
+        min-height: 65px;
+        height: auto;
+        padding: 12px 15px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        flex-wrap: nowrap;
     }
 
     .logo {
         font-size: 23px;
+        letter-spacing: 1px;
     }
 
-    nav {
-        display: grid;
-        grid-template-columns: repeat(2, 1fr);
-        text-align: center;
-        gap: 15px;
-    }
-
-    nav a {
-        font-size: 13px;
+    .usuario-area {
+        gap: 6px;
+        margin-left: auto;
     }
 
     .usuario-info {
         display: none;
     }
 
+    .avatar {
+        width: 35px;
+        height: 35px;
+    }
+
     .botao-sair {
-        margin-left: 0;
+        margin-left: 3px;
+        padding: 7px 9px;
+        font-size: 9px;
     }
 
     main {
-        padding: 30px 15px;
+        width: 100%;
+        max-width: 100%;
+        min-height: auto;
+        padding: 30px 12px 50px;
+    }
+
+    .tela {
+        width: 100%;
     }
 
     .login-container {
+        width: 100%;
         min-height: auto;
+        display: flex;
+        flex-direction: column;
         gap: 35px;
     }
 
-    .login-apresentacao h1 {
-        font-size: 45px;
+    .login-apresentacao {
+        width: 100%;
+        min-width: 0;
+        text-align: left;
+    }
+
+    .codigo-decorativo {
+        font-size: 9px;
+        letter-spacing: 1px;
+        margin-bottom: 15px;
     }
 
     .logo-grande {
-        font-size: 27px;
+        font-size: 25px;
+        letter-spacing: 2px;
+    }
+
+    .linha-neon {
+        margin: 18px 0;
+    }
+
+    .login-apresentacao h1 {
+        width: 100%;
+        font-size: clamp(38px, 13vw, 55px);
+        line-height: 0.95;
+        letter-spacing: 1px;
+        overflow-wrap: break-word;
     }
 
     .login-apresentacao > p {
-        font-size: 14px;
+        width: 100%;
+        max-width: 100%;
+        font-size: 13px;
         line-height: 1.7;
+        margin: 20px 0;
+    }
+
+    .painel-anime {
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
     }
 
     .painel-anime div {
         width: 100%;
-        padding: 12px 15px;
+        padding: 11px 15px;
+        font-size: 12px;
     }
 
-    .login-card,
-    .criar-form,
-    .criar-lateral,
-    .bloco-pergunta,
-    .questao-card {
-        padding: 20px;
+    .login-card {
+        width: 100%;
+        max-width: 100%;
+        min-width: 0;
+        padding: 25px 18px;
+        margin: 0;
     }
 
-    .dashboard-topo h1 {
-        font-size: 32px;
-    }
-
-    .titulo-secao h2 {
+    .login-card h2 {
         font-size: 25px;
     }
 
-    .card-simulado {
-        padding: 17px;
+    .login-card > p {
+        font-size: 12px;
+        line-height: 1.5;
     }
 
-    .simulado-card-acoes {
+    label {
+        font-size: 11px;
+    }
+
+    input,
+    select,
+    textarea {
         width: 100%;
+        min-width: 0;
+        max-width: 100%;
+        font-size: 14px;
+        padding: 13px;
     }
 
-    .btn-fazer,
-    .btn-compartilhar {
-        flex: 1;
+    .botao-principal,
+    .botao-criar {
+        width: 100%;
+        padding: 14px;
     }
 
-    .pergunta-topo {
-        align-items: flex-start;
-    }
-
-    .pergunta-topo h2 {
-        font-size: 17px;
-    }
-
-    .numero-pergunta {
-        width: 40px;
-        height: 40px;
-    }
-
-    .realizar-topo {
+    .dashboard-topo {
+        width: 100%;
         flex-direction: column;
         align-items: flex-start;
         gap: 12px;
     }
 
-    .questao-card h2 {
-        font-size: 21px;
+    .dashboard-topo h1 {
+        width: 100%;
+        font-size: clamp(30px, 9vw, 38px);
+        line-height: 1;
     }
 
-    .alternativa {
-        padding: 12px;
-        gap: 10px;
+    .dashboard-topo p {
+        font-size: 10px;
+        letter-spacing: 1px;
     }
 
-    .resultado-questao-topo {
+    .estatisticas {
+        width: 100%;
+        display: flex;
         flex-direction: column;
-        gap: 5px;
+        gap: 10px;
+        margin: 25px 0 40px;
     }
 
-    .footer-conteudo {
-        gap: 20px;
-    }
-}
-
-@media (max-width: 380px) {
-
-    nav {
-        grid-template-columns: 1fr;
+    .estatistica {
+        width: 100%;
+        padding: 18px;
     }
 
-    .login-apresentacao h1 {
-        font-size: 38px;
+    #listaSimulados,
+    #listaSimuladosPagina {
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        gap: 12px;
     }
 
-    .login-card {
+    .card-simulado {
+        width: 100%;
+        min-width: 0;
+        display: grid;
+        grid-template-columns: 42px minmax(0, 1fr);
+        gap: 12px;
         padding: 17px;
     }
 
-    .btn-fazer,
-    .btn-compartilhar {
-        width: 100%;
-        flex: none;
+    .simulado-card-icon {
+        width: 42px;
+        height: 42px;
+        font-size: 17px;
+    }
+
+    .simulado-card-info {
+        min-width: 0;
+        overflow: hidden;
+    }
+
+    .simulado-card-info h3 {
+        font-size: 14px;
+        overflow-wrap: anywhere;
+        word-break: break-word;
+    }
+
+    .simulado-card-info p {
+        font-size: 10px;
+        line-height: 1.4;
     }
 
     .simulado-card-acoes {
+        grid-column: 1 / -1;
+        width: 100%;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 7px;
+    }
+
+    .btn-fazer,
+    .btn-compartilhar,
+    .btn-excluir {
+        width: 100%;
+        min-height: 38px;
+    }
+
+    .pagina-titulo {
+        margin-bottom: 25px;
+    }
+
+    .pagina-titulo h1 {
+        width: 100%;
+        font-size: clamp(30px, 9vw, 40px);
+        line-height: 1.05;
+        overflow-wrap: anywhere;
+    }
+
+    .pagina-titulo p {
+        font-size: 12px;
+        line-height: 1.6;
+    }
+
+    .criar-grid {
+        width: 100%;
+        display: flex;
         flex-direction: column;
+        gap: 15px;
+    }
+
+    .criar-form,
+    .criar-lateral {
+        width: 100%;
+        min-width: 0;
+        padding: 20px 17px;
+    }
+
+    .criar-form h2,
+    .criar-lateral h2 {
+        font-size: 21px;
+    }
+
+    .criar-form > p,
+    .criar-lateral > p {
+        font-size: 12px;
+        line-height: 1.6;
+    }
+
+    #areaPerguntas {
+        width: 100%;
+    }
+
+    .bloco-pergunta {
+        width: 100%;
+        min-width: 0;
+        padding: 18px 15px;
+        margin-bottom: 14px;
+    }
+
+    .pergunta-topo {
+        width: 100%;
+        gap: 10px;
+        margin-bottom: 18px;
+    }
+
+    .numero-pergunta {
+        width: 38px;
+        height: 38px;
+        min-width: 38px;
+    }
+
+    .pergunta-topo h2 {
+        font-size: 16px;
+        line-height: 1.4;
+        overflow-wrap: anywhere;
+    }
+
+    .alternativas-grid {
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        gap: 0;
+    }
+
+    .realizar-topo {
+        width: 100%;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 8px;
+    }
+
+    .realizar-topo h1 {
+        width: 100%;
+        font-size: clamp(28px, 8vw, 35px);
+        line-height: 1.1;
+        overflow-wrap: anywhere;
+    }
+
+    .contador {
+        font-size: 11px;
+    }
+
+    .barra {
+        width: 100%;
+        margin-bottom: 20px;
+    }
+
+    .questao-card {
+        width: 100%;
+        max-width: 100%;
+        min-width: 0;
+        padding: 25px 17px;
+        margin: 0;
+    }
+
+    .questao-card h2 {
+        width: 100%;
+        font-size: clamp(19px, 5vw, 23px);
+        line-height: 1.45;
+        margin: 12px 0 22px;
+        overflow-wrap: anywhere;
+    }
+
+    .alternativa {
+        width: 100%;
+        min-height: 52px;
+        padding: 12px;
+        gap: 10px;
+        font-size: 13px;
+        line-height: 1.4;
+        overflow-wrap: anywhere;
+    }
+
+    .letra {
+        min-width: 32px;
+        width: 32px;
+        height: 32px;
+    }
+
+    .resultado-topo h1 {
+        font-size: clamp(29px, 9vw, 35px);
+    }
+
+    .resultado-principal {
+        width: 100%;
+        max-width: 100%;
+        padding: 30px 15px;
+    }
+
+    .nota {
+        font-size: clamp(55px, 18vw, 75px);
+    }
+
+    .resultado-principal h2 {
+        font-size: 20px;
+    }
+
+    .resultado-principal p {
+        font-size: 12px;
+        line-height: 1.6;
+    }
+
+    .resultados {
+        width: 100%;
+        margin: 30px auto;
+    }
+
+    .resultado-questao {
+        width: 100%;
+        padding: 16px;
+    }
+
+    .resultado-questao h3 {
+        font-size: 13px;
+        line-height: 1.5;
+        overflow-wrap: anywhere;
+    }
+
+    .resultado-questao p {
+        font-size: 11px;
+        line-height: 1.5;
+    }
+
+    footer {
+        width: 100%;
+        padding: 28px 15px;
+    }
+
+    footer::before {
+        left: 15px;
+    }
+
+    .footer-conteudo {
+        width: 100%;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 18px;
+    }
+
+    .footer-logo {
+        font-size: 22px;
+    }
+
+    .footer-conteudo p {
+        font-size: 10px;
+        line-height: 1.5;
+    }
+
+    .footer-status {
+        font-size: 10px;
+    }
+
+    .footer-final {
+        width: 100%;
+        line-height: 1.5;
+    }
+}
+
+
+/* CELULARES PEQUENOS */
+
+@media (max-width: 380px) {
+
+    main {
+        padding: 25px 9px 40px;
+    }
+
+    header {
+        padding: 11px 10px;
+    }
+
+    .logo {
+        font-size: 21px;
+    }
+
+    .login-card {
+        padding: 20px 14px;
+    }
+
+    .login-apresentacao h1 {
+        font-size: 36px;
+    }
+
+    .card-simulado {
+        padding: 14px;
+    }
+
+    .simulado-card-acoes {
+        grid-template-columns: 1fr;
+    }
+
+    .criar-form,
+    .criar-lateral,
+    .bloco-pergunta,
+    .questao-card {
+        padding: 17px 13px;
+    }
+
+    .questao-card h2 {
+        font-size: 18px;
+    }
+
+    .alternativa {
+        font-size: 12px;
+        padding: 10px;
+    }
+
+    .letra {
+        min-width: 29px;
+        width: 29px;
+        height: 29px;
+    }
+
+    .resultado-principal {
+        padding: 25px 12px;
     }
 }
