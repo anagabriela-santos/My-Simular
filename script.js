@@ -139,6 +139,35 @@ async function entrar() {
 
 }
 
+async function esqueciSenha() {
+
+    const email = document.getElementById("email").value.trim();
+
+    const mensagem = document.getElementById("mensagemSenha");
+
+    if (!email) {
+        mensagem.textContent = "Digite seu e-mail primeiro.";
+        return;
+    }
+
+    mensagem.textContent = "ENVIANDO E-MAIL...";
+
+    const { error } = await supabaseClient.auth.resetPasswordForEmail(
+        email,
+        {
+            redirectTo: "https://anagabriela-santos.github.io/My-Simular/"
+        }
+    );
+
+    if (error) {
+        mensagem.textContent = "Erro: " + error.message;
+        return;
+    }
+
+    mensagem.textContent =
+        "E-mail enviado! Verifique sua caixa de entrada.";
+}
+
 
 async function cadastrar() {
 
@@ -171,12 +200,14 @@ async function cadastrar() {
         "CRIANDO CONTA...";
 
     const { error } =
-        await supabaseClient.auth.signUp({
+    await supabaseClient.auth.signUp({
+        email: email,
+        password: senha,
+        options: {
+            emailRedirectTo: "https://anagabriela-santos.github.io/My-Simular/"
+        }
+    });
 
-            email: email,
-            password: senha
-
-        });
 
     if (error) {
 
