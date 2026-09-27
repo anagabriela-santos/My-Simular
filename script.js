@@ -168,6 +168,48 @@ async function esqueciSenha() {
         "E-mail enviado! Verifique sua caixa de entrada.";
 }
 
+async function salvarNovaSenha() {
+
+    const novaSenha = document.getElementById("novaSenha").value;
+    const confirmarSenha = document.getElementById("confirmarSenha").value;
+    const mensagem = document.getElementById("mensagemNovaSenha");
+
+    if (!novaSenha || !confirmarSenha) {
+        mensagem.textContent = "Preencha os dois campos.";
+        return;
+    }
+
+    if (novaSenha.length < 6) {
+        mensagem.textContent = "A senha precisa ter pelo menos 6 caracteres.";
+        return;
+    }
+
+    if (novaSenha !== confirmarSenha) {
+        mensagem.textContent = "As senhas não são iguais.";
+        return;
+    }
+
+    mensagem.textContent = "ALTERANDO SENHA...";
+
+    const { error } = await supabaseClient.auth.updateUser({
+        password: novaSenha
+    });
+
+    if (error) {
+        mensagem.textContent = "Erro: " + error.message;
+        return;
+    }
+
+    mensagem.textContent = "Senha alterada com sucesso!";
+
+    document.getElementById("novaSenha").value = "";
+    document.getElementById("confirmarSenha").value = "";
+
+    setTimeout(function() {
+        mostrarTela("login");
+    }, 2000);
+}
+
 
 async function cadastrar() {
 
@@ -1271,5 +1313,12 @@ function escaparHTML(texto) {
 
 }
 
+supabaseClient.auth.onAuthStateChange(function(event) {
+
+    if (event === "PASSWORD_RECOVERY") {
+        mostrarTela("redefinirSenha");
+    }
+
+});
 
 iniciarSistema();
